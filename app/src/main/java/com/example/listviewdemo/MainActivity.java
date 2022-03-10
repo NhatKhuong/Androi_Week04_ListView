@@ -5,33 +5,42 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.example.listviewdemo.adapter.LanguageAdapter;
-import com.example.listviewdemo.model.Language;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ListView listView;
-    ArrayList listLanguage;
+    ListView lvGoods;
+    CustomGoodsAdapter adt;
+    ArrayList<Goods> arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.custom_list_view_activity);
+        setContentView(R.layout.activity_main);
+        lvGoods = findViewById(R.id.lvGoods);
 
-        listView = (ListView) findViewById(R.id.idListView);
-        listLanguage = new ArrayList<>();
-        listLanguage.add(new Language(1, "Lập Trình Java"));
-        listLanguage.add(new Language(2, "Lập Trình Android"));
-        listLanguage.add(new Language(3, "Lập Trình JavaFX"));
-        listLanguage.add(new Language(4, "Lập Trình Web"));
-        listLanguage.add(new Language(5, "Lập Trình Ruby"));
-        listLanguage.add(new Language(6, "Lập Trình C++"));
-        listLanguage.add(new Language(7, "Lập Trình PHP"));
-        listLanguage.add(new Language(8, "Lập Trình WordPress"));
+        arrayList = new ArrayList<>();
+        arrayList.add(
+                new Goods("Ca nấu lẩu, nấu mini...","Shop Devang",R.drawable.ca_nau_lau)
+        );
+        arrayList.add(
+                new Goods("1KG KHÔ GÀ BƠ TỎI...","Shop LTD Food",R.drawable.ga_bo_toi)
+        );
+        arrayList.add(
+                new Goods("Xe cẩu đa năng","Shop thế giới đồ chơi",R.drawable.xa_can_cau)
+        );
+        arrayList.add(
+                new Goods("Đồ chơi dạng mô hình","Shop thế giới đồ chơi",R.drawable.do_choi_dang_mo_hinh)
+        );
+        arrayList.add(
+                new Goods("Lãnh đạo giản đơn","Shop Minh Long Book",R.drawable.lanh_dao_gian_don)
+        );
+        arrayList.add(
+                new Goods("Hiểu lòng con trẻ","Shop Minh Long Book",R.drawable.hieu_long_con_tre)
+        );
+        adt = new CustomGoodsAdapter(this, R.layout.item_listview, arrayList);
+        lvGoods.setAdapter(adt);
 
-        LanguageAdapter adapter = new LanguageAdapter(this, R.layout.item_custom_list_view, listLanguage);
-        listView.setAdapter(adapter);
     }
 
 
