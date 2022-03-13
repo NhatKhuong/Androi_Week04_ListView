@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add(
                 new Goods("Hiểu lòng con trẻ","Shop Minh Long Book",R.drawable.hieu_long_con_tre)
         );
+
         adt = new CustomGoodsAdapter(this, R.layout.item_listview, arrayList);
         lvGoods.setAdapter(adt);
 
